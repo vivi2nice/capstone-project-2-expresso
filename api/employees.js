@@ -21,6 +21,8 @@ employeesRouter.param('employeeId', (req, res, next, employeeId) => {
 	});
 });
 
+employeesRouter.use('/:employeeId/timesheets', timesheetsRouter);
+
 employeesRouter.get('/', (req, res, next) => {
 	db.all('SELECT * FROM Employee WHERE Employee.is_current_employee = 1',
 		(err, employees) => {
